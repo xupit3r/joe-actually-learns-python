@@ -90,3 +90,12 @@ class Joe:
 me = Joe("fuck!")
 
 me.say()
+
+phonebook = {}
+phonebook["john"] = 12345678
+phonebook["jingle"] = 1222222
+phonebook["rudolph"] = 1
+print(phonebook)
+
+for name, number in phonebook.items():
+    print("name is %s, phone number is %d" % (name, number))
