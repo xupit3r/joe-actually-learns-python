@@ -1,4 +1,4 @@
-import draw
+import mygame.draw as md
 
 
 def play_game():
@@ -7,7 +7,7 @@ def play_game():
 
 def main():
     result = play_game()
-    draw.draw_gam(result)
+    md.draw_game(result)
 
 
 if __name__ == "__main__":

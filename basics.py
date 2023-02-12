@@ -1,3 +1,7 @@
+import pjoe.joebar as pj
+import mygame.draw as md
+import mygame.game as mg
+
 mylist = []
 
 mylist.append(1)
@@ -99,3 +103,9 @@ print(phonebook)
 
 for name, number in phonebook.items():
     print("name is %s, phone number is %d" % (name, number))
+
+
+play_state = mg.play_game()
+md.draw_game(play_state)
+
+pj.joe()
