@@ -3,6 +3,7 @@ import mygame.draw as md
 import mygame.game as mg
 import numpy as np
 import pandas as pd
+import random
 
 mylist = []
 
@@ -139,3 +140,28 @@ print(brics)
 cars = pd.read_csv("cars.csv", index_col=0)
 print(cars)
 print(cars.sort_values(by="awesomeness", ascending=False))
+
+
+def lottery():
+    for i in range(6):
+        yield random.randint(1, 40)
+
+    yield random.randint(1, 15)
+
+
+for random_number in lottery():
+    print("And the next number is.... %d!" % random_number)
+
+# a lengthy way to create a list of word lengths for every word except "the"
+sentence = "the quick brown fox jumps over the lazy dog"
+words = sentence.split()
+word_lengths = []
+for word in words:
+    if word != "the":
+        word_lengths.append(len(word))
+print(words)
+print(word_lengths)
+
+# a list comprehension way to do this
+word_lengths = [len(word) for word in words if word != "the"]
+print(word_lengths)
