@@ -4,6 +4,7 @@ import mygame.game as mg
 import numpy as np
 import pandas as pd
 import random
+from functools import partial
 
 mylist = []
 
@@ -181,3 +182,11 @@ print(a.difference(b))
 print(b.difference(a))
 
 print(a.union(b))
+
+
+def multiply(x, y):
+    return x * y
+
+
+dbl = partial(multiply, 2)
+print(dbl(4))
