@@ -1,10 +1,11 @@
+from itertools import repeat
 import pjoe.joebar as pj
 import mygame.draw as md
 import mygame.game as mg
 import numpy as np
 import pandas as pd
 import random
-from functools import partial
+from functools import partial, reduce
 
 mylist = []
 
@@ -200,3 +201,50 @@ def transmit(message):
 
 
 print(transmit("test message")())
+
+
+def repeater(old_function):
+    # See learnpython.org/en/Multiple%20Function%20Arguments for how *args and **kwds works
+    def new_function(*args, **kwds):
+        old_function(*args, **kwds)
+        old_function(*args, **kwds)
+
+    # we have to return the new_function, or it wouldn't reassign it to the value
+    return new_function
+
+
+@repeater
+def multiply(n1, n2):
+    print(n1 * n2)
+
+
+print(multiply(3, 2))
+
+my_pets = ["alfred", "tabitha", "william", "arla"]
+uppered_pets = list(map(str.upper, my_pets))
+print(uppered_pets)
+
+first_uppered = list(map(lambda str: "%s%s" % (str[0].upper(), str[1:]), my_pets))
+print(first_uppered)
+
+circle_areas = [3.56773, 5.57668, 4.00914, 56.24241, 9.01344, 32.00013]
+
+result = list(map(round, circle_areas, repeat(2, len(circle_areas))))
+
+print(result)
+
+my_strings = ["a", "b", "c", "d", "e"]
+my_numbers = [1, 2, 3, 4, 5]
+
+zipped = list(map(lambda x, y: (x, y), my_strings, my_numbers))
+print(zipped)
+
+dromes = ("demigod", "rewire", "madam", "freer", "anutforajaroftuna", "kiosk")
+
+palindromes = list(filter(lambda word: word == word[::-1], dromes))
+
+print(palindromes)
+
+numbers = [3, 4, 6, 9, 34, 12]
+sum = reduce(lambda x, y: x + y, numbers, 10)
+print(sum)
