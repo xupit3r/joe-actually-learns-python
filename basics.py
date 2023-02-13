@@ -190,3 +190,13 @@ def multiply(x, y):
 
 dbl = partial(multiply, 2)
 print(dbl(4))
+
+
+def transmit(message):
+    def transmitter():
+        print("the nested function is printing the message %s" % message)
+
+    return transmitter
+
+
+print(transmit("test message")())
